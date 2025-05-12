@@ -49,3 +49,5 @@ gem "bibtex-ruby", "~> 6.0"        # Newer version (optional)
 
 
 # gem "rails"
+
+gem "rake", "13.0.6"  # Match the version in the error
