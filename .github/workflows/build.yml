@@ -1,8 +1,12 @@
 name: Build Jekyll with Scholar
 on: [push, pull_request]  # Trigger on both events
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment:  # ← THIS IS CRUCIAL
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
     permissions:
       contents: write
       pages: write
@@ -24,16 +28,17 @@ jobs:
           bundle install
 
       - name: Build with Jekyll
-        env:
-          JEKYLL_ENV: production
+#        env:
+#          JEKYLL_ENV: production
         run: |
-          bundle exec jekyll build --trace --future
-          ls -la _site/  # Verify files are generated
+          bundle exec jekyll build --trace
+#          ls -la _site/  # Verify files are generated
           
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site  # Explicitly upload the built site  
+          path: './_site' # Explicitly upload the built site  
         
-      - name: Deploy
+      - name: Deploy to GitHub Pages
+        id: deployment  # ← NOTE THIS ID
         uses: actions/deploy-pages@v4
