@@ -1,17 +1,25 @@
-name: Build Jekyll with scholar
-on: [push]
+name: Build Jekyll with Scholar
+on: [push, pull_request]  # Trigger on both events
 jobs:
-  jekyll:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/cache@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - uses: helaili/jekyll-action@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          enable_jekyll_plugins: true
+          ruby-version: 3.1  # Match Jekyll 4.x requirement
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: |
+          gem install jekyll -v 4.3.3
+          gem install jekyll-scholar -v 7.0
+          bundle install
+
+      - name: Build with Jekyll
+        env:
+          JEKYLL_ENV: production
+        run: |
+          jekyll build --trace --future
