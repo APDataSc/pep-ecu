@@ -23,3 +23,11 @@ jobs:
           JEKYLL_ENV: production
         run: |
           bundle exec jekyll build --trace --future
+          
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+        path: ./_site  # Explicitly upload the built site  
+        
+      - name: Deploy
+        uses: actions/deploy-pages@v4
