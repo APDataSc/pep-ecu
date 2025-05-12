@@ -28,6 +28,7 @@ jobs:
           JEKYLL_ENV: production
         run: |
           bundle exec jekyll build --trace --future
+          ls -la _site/  # Verify files are generated
           
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
