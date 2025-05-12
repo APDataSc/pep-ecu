@@ -42,8 +42,10 @@ gem 'rspec-mocks', '~> 3.12.6'
 gem 'rspec', '~> 3.12.0'
 # gem 'jekyll-scholar'
 
+# Last version
 gem "jekyll", "~> 4.3.3"          # Latest stable Jekyll 4.x
 gem "jekyll-scholar", "~> 7.0"     # Requires Jekyll 4+
 gem "bibtex-ruby", "~> 6.0"        # Newer version (optional)
+
 
 # gem "rails"
