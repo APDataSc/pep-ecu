@@ -353,5 +353,5 @@ destination: _site  # Ensures Jekyll builds to correct folder
 
 baseurl: "/pep-ecu"  # Must match your repository name!
 url: "https://apdatasc.github.io"
-permalink: pretty    # Ensures .html extensions work
-
+#permalink: pretty    # Ensures .html extensions work
+permalink_style: pretty
