@@ -350,3 +350,8 @@ scholar:
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
 destination: _site  # Ensures Jekyll builds to correct folder
+
+baseurl: "/pep-ecu"  # Must match your repository name!
+url: "https://apdatasc.github.io"
+permalink: pretty    # Ensures .html extensions work
+
