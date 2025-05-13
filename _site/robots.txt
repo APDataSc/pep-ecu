@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://apdatasc.github.io/pep-ecu/sitemap.xml
